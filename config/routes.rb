@@ -14,7 +14,19 @@ Rails.application.routes.draw do
   get    '/signup',  to: 'users#new'
   post   '/signup',  to: 'users#create'
 
+  ########### Events #################
+  get    '/host',    to: 'events#new'
+  post   '/host',    to: 'events#create'
+
+  ########### Invitations ############
+  #resources :events do
+  #  get    '/invite',  to: 'invitations#new'
+  #  post   '/invite',  to: 'invitations#create'
+  #  post   '/attend',  to: 'invitations#update'
+  #end
+
   ########### Resources ##############
   resources :users
+  resources :events
   
 end

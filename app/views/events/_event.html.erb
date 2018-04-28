@@ -1,0 +1,13 @@
+<li>
+	Event: <%= event.name %><br>
+	Location: <%= event.location %><br>
+	Date: <%= event.date.strftime("%m/%d/%y at %I:%M%p") %><br>
+	<% if logged_in? %>
+		Host: <%= event.creator.name %><br>
+		<%= link_to "Info", event, method: :get %>
+	<% end %>
+	<% if current_user?(event.creator) %>
+		| <%= link_to "Edit", edit_event_path(event) %> 
+		| <%= link_to "Delete", event, method: :delete, data: { confirm: "Are you sure?" } %>
+	<% end %>
+</li>

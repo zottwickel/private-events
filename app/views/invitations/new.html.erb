@@ -1,0 +1,21 @@
+<% provide(:title, @event.name + " invitations") %>
+<h3>Invite Guests</h3>
+
+<%= will_paginate @users %>
+
+<ul class="users">
+  <% @users.each do |user| %>
+  	<% unless (@event.creator_id == user.id) || user.invitations.find_by(guest_id: user.id) %>
+ 			<li>
+				<%= user.name %>
+				<%= form_for event_invite_path(@event) do |f| %>
+					<%= f.hidden_field(event_from: @event.id) %>
+					<%= f.hidden_field(guest_id: user.id) %>
+					<%= f.submit "invite", class: "btn-xs btn-primary btn sm" %>
+				<% end %>
+			</li>
+		<% end %>
+	<% end %>
+</ul>
+
+<%= will_paginate @users %>

@@ -5,6 +5,18 @@
       <h1>
         <%= @user.name %>
       </h1>
+      <% if current_user?(@user) && logged_in? %>
+        <%= link_to "edit", edit_user_path(@user) %>
+      <% end %>
     </section>
   </aside>
+  <div class="col-md-8">
+  	<% if @user.events.any? %>
+  		<h4>Upcoming Events (<%= @user.events.count %>)</h4>
+  		<ol class="users">
+  			<%= render @events %>
+  		</ol>
+  		<%= will_paginate @events %>
+  	<% end %>
+  </div>
 </div>

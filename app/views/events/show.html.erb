@@ -1,0 +1,18 @@
+<% provide(:title, @event.name) %>
+<div class="row">
+	<aside class="col-md-4">
+		<section class="event_info">
+			<h4>
+				Event:<br><%= @event.name %><br><br>
+				Location:<br><%= @event.location %><br><br>
+				Date:<br><%= @event.date.strftime("%m/%d/%y at %I:%M%p") %><br><br>
+				<% if logged_in? %>
+					Host:<br><%= @event.creator.name %><br><br>
+				<% end %>
+				<% if current_user?(@event.creator) %>
+					<%= link_to "Delete event", @event, method: :delete, data: { confirm: "Are you sure?" } %>
+				<% end %>
+			</h4>
+		</section>
+	</aside>
+</div>

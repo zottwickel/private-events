@@ -16,6 +16,7 @@ body {
   padding-top: 60px;
 }
 
+
 section {
   overflow: auto;
 }
@@ -200,4 +201,11 @@ input {
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
   }
+}
+
+/* Small buttons */
+
+.sm {
+  text-align: left;
+  width: auto;
 }
