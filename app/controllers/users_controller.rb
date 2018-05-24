@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 		if @user.save
 			flash.now[:success] = "User successfully created"
+			UserMailer.welcome_email(@user).deliver!
 			log_in @user
 			redirect_to @user
 		else
